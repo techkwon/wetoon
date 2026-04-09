@@ -1,0 +1,12 @@
+__pycache__/
+.pytest_cache/
+.vercel/
+.omx/
+dist/
+work/
+work-test-*/
+*.pyc
+
+/*.png
+/*.jpg
+/*.jpeg

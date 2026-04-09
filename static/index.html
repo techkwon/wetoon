@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>PDF 책 제작소</title>
+    <link rel="stylesheet" href="/static/styles.css" />
+  </head>
+  <body>
+    <main class="shell">
+      <nav class="maker-nav">
+        <a href="/lecture">오늘 연수 페이지</a>
+        <a href="/maker" aria-current="page">학급문집 PDF 제작</a>
+      </nav>
+      <section class="hero">
+        <p class="eyebrow">Book PDF Studio</p>
+        <h1>PNG 업로드로 책형 PDF 만들기</h1>
+        <p class="lede">
+          표지는 따로 받고, 본문 파일명으로 색인을 자동 채운 뒤 수정할 수 있게 만든 로컬 제작 도구입니다.
+        </p>
+      </section>
+
+      <section class="board">
+        <div class="panel">
+          <div class="panel-head">
+            <h2>1. 표지 업로드</h2>
+            <span id="cover-status" class="status-pill">미등록</span>
+          </div>
+          <label class="upload-box" for="cover-input">
+            <span>표지 파일 선택</span>
+            <small>PNG, JPG, JPEG, WEBP</small>
+          </label>
+          <input id="cover-input" type="file" accept=".png,.jpg,.jpeg,.webp" hidden />
+          <p id="cover-name" class="meta-line">아직 업로드된 표지가 없습니다.</p>
+        </div>
+
+        <div class="panel">
+          <div class="panel-head">
+            <h2>2. 본문 업로드</h2>
+            <span id="image-count" class="status-pill">0장</span>
+          </div>
+          <label class="upload-box" for="images-input">
+            <span>본문 이미지 여러 장 선택</span>
+            <small>파일명 기준으로 자동 색인을 만듭니다.</small>
+          </label>
+          <input id="images-input" type="file" accept=".png,.jpg,.jpeg,.webp" multiple hidden />
+          <p class="meta-line">
+            업로드 후 순서를 바꾸고 색인 텍스트를 수정할 수 있습니다. 현재 구현은 자르지 않고 한 이미지씩 한 페이지에 넣습니다.
+          </p>
+        </div>
+      </section>
+
+      <section class="panel list-panel">
+        <div class="panel-head">
+          <h2>3. 파일 리스트와 색인</h2>
+          <button id="save-order-button" class="ghost-button" type="button">순서/색인 저장</button>
+        </div>
+        <div id="empty-state" class="empty-state">
+          본문 이미지를 업로드하면 파일 리스트가 여기에 나타납니다.
+        </div>
+        <div id="list-wrap" class="list-wrap"></div>
+      </section>
+
+      <section class="panel action-panel">
+        <div>
+          <h2>4. PDF 생성</h2>
+          <p class="meta-line">
+            생성된 PDF에는 표지, 본문 페이지 번호, 수정한 색인 이름 기반 북마크가 포함됩니다.
+          </p>
+        </div>
+        <label class="index-editor title-editor">
+          <span>책 제목</span>
+          <input id="book-title-input" type="text" value="위툰 작품집" maxlength="120" />
+        </label>
+        <div class="action-row">
+          <button id="new-session-button" class="ghost-button" type="button">새 작업 시작</button>
+          <button id="build-button" class="primary-button" type="button">PDF 생성</button>
+        </div>
+        <a id="download-link" class="download-link hidden" href="#" download>생성된 PDF 다운로드</a>
+      </section>
+
+      <p id="flash" class="flash" role="status" aria-live="polite"></p>
+    </main>
+
+    <script src="/static/app.js" defer></script>
+  </body>
+</html>
