@@ -2,12 +2,12 @@ const ideaState = {
   schoolLevels: [],
   subjectsByLevel: {},
   featuredIdeas: [],
-  lastSuggestedSubject: "",
 };
 
 const schoolLevelSelect = document.querySelector("#school-level");
 const subjectExampleSelect = document.querySelector("#subject-example");
 const subjectInput = document.querySelector("#subject-input");
+const applyExampleButton = document.querySelector("#apply-example-button");
 const unitInput = document.querySelector("#unit");
 const periodsInput = document.querySelector("#periods");
 const teachingGoalInput = document.querySelector("#teaching-goal");
@@ -60,11 +60,6 @@ function fillSubjects(level) {
     option.textContent = subject;
     subjectExampleSelect.appendChild(option);
   });
-  const suggested = subjectExampleSelect.value;
-  if (!subjectInput.value.trim() || subjectInput.value.trim() === ideaState.lastSuggestedSubject) {
-    subjectInput.value = suggested;
-  }
-  ideaState.lastSuggestedSubject = suggested;
 }
 
 function renderCuratedIdeas(items) {
@@ -132,7 +127,12 @@ function renderExpandedIdea(payload) {
 async function refreshIdeas() {
   providerStatus.textContent = "수업안을 생성하는 중입니다.";
   try {
-    const subject = subjectInput.value.trim() || subjectExampleSelect.value;
+    const subject = subjectInput.value.trim();
+    if (!subject) {
+      providerStatus.textContent = "실제 생성 과목을 입력하거나 예시 과목을 복사해 주세요.";
+      providerStatus.dataset.mode = "local-fallback";
+      return;
+    }
     const payload = await api("/api/lesson-ideas/generate", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -159,19 +159,22 @@ async function bootstrap() {
   ideaState.featuredIdeas = seeds.featured_ideas;
   fillSchoolLevels(ideaState.schoolLevels);
   fillSubjects(schoolLevelSelect.value);
+  if (!subjectInput.value.trim()) {
+    subjectInput.value = subjectExampleSelect.value;
+  }
   renderCuratedIdeas(ideaState.featuredIdeas);
   await refreshIdeas();
 }
 
 schoolLevelSelect.addEventListener("change", () => {
   fillSubjects(schoolLevelSelect.value);
-  refreshIdeas();
 });
 subjectExampleSelect.addEventListener("change", () => {
-  if (!subjectInput.value.trim() || subjectInput.value.trim() === ideaState.lastSuggestedSubject) {
-    subjectInput.value = subjectExampleSelect.value;
-  }
-  ideaState.lastSuggestedSubject = subjectExampleSelect.value;
+  providerStatus.textContent = "예시 과목이 바뀌었습니다. 필요하면 아래 버튼으로 실제 과목 입력칸에 넣어 주세요.";
+  providerStatus.dataset.mode = "local-fallback";
+});
+applyExampleButton.addEventListener("click", () => {
+  subjectInput.value = subjectExampleSelect.value;
   refreshIdeas();
 });
 subjectInput.addEventListener("change", refreshIdeas);

@@ -3,7 +3,33 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>위툰 선생연수 서비스 페이지</title>
+    <title>위툰 선생연수 | 교사 연수 자료와 수업 아이디어</title>
+    <meta
+      name="description"
+      content="위툰 선생연수용 교사 서비스 페이지입니다. 위툰 스쿨 소개자료, 샘플 교재, 사용 메뉴얼, 초중고 교과별 수업 아이디어, 학급문집 PDF 제작 도구를 한곳에 모았습니다."
+    />
+    <meta
+      name="keywords"
+      content="위툰, Wetoon, 위툰 스쿨, 교사 연수, 수업 아이디어, AI 웹툰, 학급문집, 교과 웹툰, 교육 에듀테크"
+    />
+    <meta name="robots" content="index,follow" />
+    <meta name="theme-color" content="#0f57b7" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="위툰 선생연수 | 교사 연수 자료와 수업 아이디어" />
+    <meta
+      property="og:description"
+      content="위툰 연수용 서비스 페이지에서 자료 다운로드, 수업 아이디어 탐색, 학급문집 PDF 제작까지 바로 확인하세요."
+    />
+    <meta property="og:url" content="https://wetoon-gamma.vercel.app/" />
+    <meta property="og:image" content="https://wetoon-gamma.vercel.app/static/assets/lecture-poster.jpg" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="위툰 선생연수 | 교사 연수 자료와 수업 아이디어" />
+    <meta
+      name="twitter:description"
+      content="위툰 스쿨 소개자료, 메뉴얼, 교과별 수업 아이디어와 학급문집 PDF 제작 도구를 한 페이지에 모았습니다."
+    />
+    <link rel="canonical" href="https://wetoon-gamma.vercel.app/" />
+    <link rel="icon" type="image/svg+xml" href="/static/assets/favicon.svg" />
     <link rel="stylesheet" href="/static/lecture.css" />
   </head>
   <body>
@@ -156,14 +182,21 @@
               <span>학교급</span>
               <select id="school-level"></select>
             </label>
-            <label>
-              <span>예시 과목 보기</span>
-              <select id="subject-example"></select>
-            </label>
-            <label>
-              <span>내 과목 입력</span>
-              <input id="subject-input" type="text" placeholder="예: 사회문화, 기술가정, 한문, 자율활동" />
-            </label>
+            <section class="subject-block subject-block-example">
+              <label>
+                <span>예시 과목 보기</span>
+                <select id="subject-example"></select>
+              </label>
+              <p class="field-hint">참고용 예시입니다. 생성에 자동 사용되지 않습니다.</p>
+              <button id="apply-example-button" class="mini-action" type="button">예시 과목을 입력칸에 넣기</button>
+            </section>
+            <section class="subject-block subject-block-actual">
+              <label>
+                <span>실제 생성 과목</span>
+                <input id="subject-input" type="text" placeholder="예: 사회문화, 기술가정, 한문, 자율활동" />
+              </label>
+              <p class="field-hint strong-hint">이 입력칸의 과목명이 실제 수업안 생성에 사용됩니다.</p>
+            </section>
             <label>
               <span>단원 / 주제</span>
               <input id="unit" type="text" placeholder="예: 서사의 관점, AI 윤리, 공공장소 약속" />

@@ -379,6 +379,34 @@ body {
   font-weight: 700;
 }
 
+.subject-block {
+  display: grid;
+  gap: 10px;
+  padding: 14px;
+  border: 2px dashed #111;
+  background: #fffdfa;
+}
+
+.subject-block-example {
+  background: linear-gradient(180deg, #fff9da 0%, #fffef7 100%);
+}
+
+.subject-block-actual {
+  background: linear-gradient(180deg, #eef7ff 0%, #ffffff 100%);
+}
+
+.field-hint {
+  margin: 0;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: rgba(17, 17, 17, 0.72);
+}
+
+.strong-hint {
+  color: #0b4fa9;
+  font-weight: 700;
+}
+
 .idea-form input,
 .idea-form select {
   width: 100%;
@@ -391,6 +419,17 @@ body {
 .idea-actions {
   display: grid;
   gap: 10px;
+}
+
+.mini-action {
+  justify-self: start;
+  padding: 10px 14px;
+  border: 2px solid #111;
+  background: var(--yellow);
+  color: #111;
+  font: inherit;
+  font-weight: 800;
+  cursor: pointer;
 }
 
 .provider-status {

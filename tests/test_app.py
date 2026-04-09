@@ -25,8 +25,10 @@ def test_index_page_serves() -> None:
     assert "초중고 · 교과 · 단원별 위툰 수업 아이디어" in response.text
     assert "연수 자료 다운로드" in response.text
     assert "예시 과목 보기" in response.text
-    assert "내 과목 입력" in response.text
+    assert "실제 생성 과목" in response.text
+    assert "예시 과목을 입력칸에 넣기" in response.text
     assert "위툰으로 바로 이동" in response.text
+    assert "/static/assets/favicon.svg" in response.text
 
 
 def test_maker_page_serves() -> None:

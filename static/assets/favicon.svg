@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="WeToon favicon">
+  <rect width="64" height="64" rx="14" fill="#0f57b7"/>
+  <rect x="8" y="10" width="48" height="44" rx="10" fill="#ffcc12" stroke="#111111" stroke-width="3"/>
+  <path d="M18 22l5 20 7-14 7 14 5-20" fill="none" stroke="#111111" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M40 8h10l6 6v1H39z" fill="#111111"/>
+  <path d="M43 10l2-4 7 8" fill="none" stroke="#111111" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
