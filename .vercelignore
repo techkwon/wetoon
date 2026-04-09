@@ -1,0 +1,12 @@
+.git
+.omx
+.pytest_cache
+__pycache__
+dist
+work
+work-test-*
+tests
+
+/*.png
+/*.jpg
+/*.jpeg
